@@ -29,7 +29,7 @@ package main
 import (
 	"context"
 	"github.com/rs/zerolog/log"
-	"github.com/withoutaseccondthought/logger"
+	"github.com/withoutasecondthought/logger"
 )
 
 func main() {
