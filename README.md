@@ -17,7 +17,7 @@ Highlights:
 
 Use Go modules as usual:
 
-    go get github.com/withoutaseccondthought/logger
+    go get github.com/withoutasecondthought/logger
 
 ## Quick start
 
