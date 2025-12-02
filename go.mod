@@ -1,4 +1,4 @@
-module github.com/withoutaseccondthought/logger
+module github.com/withoutasecondthought/logger
 
 go 1.25
 
