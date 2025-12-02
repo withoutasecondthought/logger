@@ -2,7 +2,11 @@ package logger
 
 import "context"
 
-func SetLoggerField(ctx context.Context, key string, value interface{}) context.Context {
+func SetLoggerField(ctx context.Context, key string, value any) context.Context {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+
 	loggerKeys, ok := ctx.Value(LOGGER_KEYS).(Keys)
 
 	newLoggerKeys := make(Keys)
@@ -15,11 +19,15 @@ func SetLoggerField(ctx context.Context, key string, value interface{}) context.
 	newLoggerKeys[Key(key)] = struct{}{}
 
 	return context.WithValue(context.WithValue(
-		ctx, key, value,
+		ctx, Key(key), value,
 	), LOGGER_KEYS, newLoggerKeys)
 }
 
 func SetLoggerFields(ctx context.Context, fields map[string]any) context.Context {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+
 	loggerKeys, ok := ctx.Value(LOGGER_KEYS).(Keys)
 
 	newLoggerKeys := make(Keys)
@@ -32,7 +40,7 @@ func SetLoggerFields(ctx context.Context, fields map[string]any) context.Context
 	for k, v := range fields {
 		newLoggerKeys[Key(k)] = struct{}{}
 		//nolint:fatcontext
-		ctx = context.WithValue(ctx, k, v)
+		ctx = context.WithValue(ctx, Key(k), v)
 	}
 
 	return context.WithValue(ctx, LOGGER_KEYS, newLoggerKeys)
