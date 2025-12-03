@@ -1,3 +1,5 @@
+// Package logger is a tiny logging helper built on top of zerolog
+// that stores structured fields in a context.Context and attaches them to log events automatically.
 package logger
 
 import (
