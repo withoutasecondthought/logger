@@ -63,3 +63,7 @@ func Init(level string) {
 
 	Logger = newLogger(log.Logger.Level(lvl))
 }
+
+func InitWithZerologLogger(zlog zerolog.Logger) {
+	Logger = newLogger(zlog)
+}
