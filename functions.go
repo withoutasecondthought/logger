@@ -53,3 +53,7 @@ func SetPackage(ctx context.Context, packageName string) context.Context {
 func SetFunction(ctx context.Context, functionName string) context.Context {
 	return SetLoggerField(ctx, "function", functionName)
 }
+
+func SetPackageAndFunction(ctx context.Context, packageName, functionName string) context.Context {
+	return SetLoggerFields(ctx, map[string]any{"package": packageName, "function": functionName})
+}
