@@ -17,7 +17,7 @@ Highlights:
 
 Use Go modules as usual:
 
-    go get github.com/withoutasecondthought/logger
+    go get -u github.com/withoutasecondthought/logger
 
 ## Quick start
 
@@ -79,6 +79,9 @@ func main() {
   - If parsing fails, the logger falls back to `Debug` level and logs the
     parsing error.
 
+- func InitWithZerologLogger(zlog zerolog.Logger)
+  - Like `Init`, but allows specifying a custom zerolog Logger instance.
+
 - func SetLoggerField(ctx context.Context, key string, value interface{}) context.Context
   - Returns a new context with `key` set to `value` and tracks the key so the
     logger can copy the value into events.
@@ -91,6 +94,9 @@ func main() {
 
 - func SetFunction(ctx context.Context, functionName string) context.Context
   - Convenience wrapper for `SetLoggerField(ctx, "function", functionName)`.
+
+- func SetPackageAndFunction(ctx context.Context, packageName, functionName string) context.Context
+  - Convenience wrapper for setting both package and function fields.
 
 - var Logger *logger
   - Global logger instance. Methods on the logger produce zerolog events and
